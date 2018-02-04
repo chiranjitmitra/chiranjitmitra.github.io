@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.jpg" />
+<meta charset="UTF-8">
+<title>Contact | Chiranjit Mitra</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="contact/style.css" media="all" />
+<link rel="stylesheet" media="all" href="style/type/puritan.css" />
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="style/css/ie7.css" media="all" />
+<![endif]-->
+<script type="text/javascript" src="style/js/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="style/js/ddsmoothmenu.js"></script>
+<script type="text/javascript" src="style/js/scripts.js"></script>
+<script type="text/javascript" src="style/js/jquery.infieldlabel.min.js"></script>
+<script type="text/javascript" src="style/js/twitter.min.js"></script>
+<script type="text/javascript">
+	$(function(){ $("label").inFieldLabels(); });
+</script>
+<script type="text/javascript">
+getTwitters('twitter', {
+        id: 'elemisdesign', 
+        count: 1, 
+        enableLinks: true, 
+        ignoreReplies: false,
+        template: '<span class="twitterPrefix"><span class="twitterStatus">%text%</span>',
+        newwindow: true
+});
+</script>
+<script type="text/javascript">  
+        
+$(document).ready(function() {
+	
+    $("#ajax-contact-form").submit(function() {
+        $('#load').append('<center><img src="ajax-loader.gif" alt="Currently Loading" id="loading" /></center>');
+
+        var fem = $(this).serialize(),
+			note = $('#note');
+	
+        $.ajax({
+            type: "POST",
+            url: "contact/contact.php",
+            data: fem,
+            success: function(msg) {
+				if ( note.height() ) {			
+					note.slideUp(500, function() { $(this).hide(); });
+				} 
+				else note.hide();
+
+				$('#loading').fadeOut(300, function() {
+					$(this).remove();
+
+					// Message Sent? Show the 'Thank You' message and hide the form
+					result = (msg === 'OK') ? '<div class="success">Your message has been sent. Thank you!</div>' : msg;
+
+					var i = setInterval(function() {
+						if ( !note.is(':visible') ) {
+							note.html(result).slideDown(500);
+							clearInterval(i);
+						}
+					}, 40);    
+				}); // end loading image fadeOut
+            }
+        });
+
+        return false;
+    });
+});
+</script>
+</head>
+<body>
+</head>
+<body>
+<div id="container">
+	<!-- Begin Header Wrapper -->
+	<div id="page-top">
+		<div id="header-wrapper">
+			<!-- Begin Header -->
+			<div id="header">
+				<div id="logo"><a href="index.html"><img src="logo.png" alt="" /></a></div>
+				<!-- logo -->
+				<!-- Begin Menu -->
+				<div id="menu-wrapper">
+					<div id="smoothmenu1" class="ddsmoothmenu">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="academics.html">Academics</a></li>
+						<li><a href="research.html">Research</a>
+						<li><a href="resume.html">Resume</a></li>
+						<li><a href="contact.html" class="selected">Contact</a></li>
+					</ul>
+					</div>
+				</div>
+				<!-- End Menu -->  
+			</div>
+			<!-- End Header --> 
+		</div>
+	</div>
+	<!-- End Header Wrapper -->
+  
+	<!-- Begin Wrapper -->
+	<div id="wrapper">
+    
+		<!-- Begin Content -->
+		<div class="content">
+			<h3>Contact Information</h3>
+			<br>
+			
+			<div class="contact-left">
+			
+				<h4><u>Address</u></h4>
+			    <p>2145 Sheridan Road<br>
+				   <a href = "http://www.physics.northwestern.edu" target="_blank">Department of Physics and Astronomy</a><br>
+				   <a href="http://www.northwestern.edu" target="_blank">Northwestern University</a><br>
+				   Evanston, Illinois 60208, USA</p>
+
+				<h4><u>Telephone</u></h4>
+				<p>Office: +1 847-467-0354<br>
+				   Mobile: +49 (0)15171459638</p>
+
+				<h4><u>E-mail</u></h4>
+				<p><a href="mailto:&#099;&#104;&#105;&#114;&#097;&#110;&#106;&#105;&#116;&#046;&#109;&#105;&#116;&#114;&#097;&#064;&#110;&#111;&#114;&#116;&#104;&#119;&#101;&#115;&#116;&#101;&#114;&#110;&#046;&#101;&#100;&#117;">chiranjit.mitra [at] northwestern [dot] edu</a><br>
+				<a href="mailto:&#099;&#104;&#105;&#114;&#097;&#110;&#106;&#105;&#116;&#046;&#109;&#105;&#116;&#114;&#097;&#064;&#112;&#105;&#107;&#045;&#112;&#111;&#116;&#115;&#100;&#097;&#109;&#046;&#100;&#101;">chiranjit.mitra [at] pik-potsdam [dot] de</a><br>
+				<a href="mailto:&#099;&#104;&#105;&#114;&#097;&#110;&#106;&#105;&#116;&#046;&#109;&#105;&#116;&#114;&#097;&#064;&#115;&#116;&#117;&#100;&#101;&#110;&#116;&#046;&#104;&#117;&#045;&#098;&#101;&#114;&#108;&#105;&#110;&#046;&#100;&#101;">chiranjit.mitra [at] student [dot] hu-berlin [dot] de</a><br>
+				<a href="mailto:&#099;&#104;&#105;&#114;&#097;&#110;&#106;&#105;&#116;&#109;&#105;&#116;&#114;&#097;&#052;&#117;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">chiranjitmitra4u [at] gmail [dot] com</a></p>
+
+				<div class="clear"></div>
+				<br>
+        
+			</div>
+			<div class="clear"></div>
+			<div class="divider"></div>   
+			<div class="clear"></div>
+		</div>      
+		<!-- End Content --> 
+    
+	</div>
+	<!-- End Wrapper -->
+  
+	<div class="clearfix"></div>
+	<div class="push"></div>
+	</div>
+
+<!-- Begin Footer -->
+<div id="footer-wrapper">
+	<div id="footer">
+		<div id="footer-content"> 
+      
+			<!-- Begin Copyright -->
+			<div id="copyright">
+			<p>&copy | Chiranjit Mitra</p>
+			</div>
+			<!-- End Copyright -->
+		
+			<!-- Begin Social Icons -->
+			<div id="socials">
+			<ul>
+				<li><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.pik-potsdam.de%2F%7Emitra&amp;width=425&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:425px; height:21px;" allowTransparency="true"></iframe></li>
+				<li><a href="http://www.linkedin.com/in/chiranjitmitra4u" title="LinkedIn" target="_blank"><img src="linkedin.png" alt=""/></a></li>
+				<li><a href="https://scholar.google.com/citations?user=bRxYM-IAAAAJ" title="Google Scholar" target="_blank"><img src="google-scholar.png" alt=""/></a></li>
+				<li><a href="https://www.researchgate.net/profile/Chiranjit_Mitra" title="ResearchGate" target="_blank"><img src="researchgate.png" alt=""/></a></li>
+			</ul>
+			</div>
+			<!-- End Social Icons -->
+      
+		</div>
+	</div>
+</div>
+<!-- End Footer -->
+</body>
+</html>
